@@ -1,0 +1,53 @@
+#import libraries and sample PDf export
+#import libraries 
+import os
+
+import tika
+
+from os import listdir
+
+from os.path import isfile, join
+
+tika.initVM()
+
+from tika import parser
+
+In [3]:
+
+#prepare loop to get all file names
+
+onlyfiles = [f for f in listdir(r"C:\Users\path")
+
+             if isfile(join(r"C:\Users\path")", f))]
+
+In [4]:
+
+#creat object with file anmes
+
+newlist = ["C:\\Users\\path")\" + x for x in onlyfiles]
+
+In [5]:
+
+#print list of all PDF names to ensure newlist worked 
+
+print(newlist)
+
+#Loop through files in directory to extract text
+
+i = 1
+
+for x in newlist:
+
+    if x.endswith(".pdf"):
+
+        raw = parser.from_file(x)
+
+        text_file = open(str(i) + ".txt", "w")
+
+        i = i + 1
+
+        great = raw.get('content')
+
+        n = text_file.write(great)
+
+        text_file.close()
